@@ -36,7 +36,7 @@ export class Player extends Phaser.GameObjects.Rectangle {
         if (this.keys.right.isDown) {
             velocityX = MOVE_SPEED;
         }
-        this.physicsBody.setVelocityX(-MOVE_SPEED);
+        this.physicsBody.setVelocityX(velocityX);
         if (this.keys.up.isDown && this.physicsBody.touching.down) {
             this.physicsBody.setVelocityY(JUMP_SPEED);
         }

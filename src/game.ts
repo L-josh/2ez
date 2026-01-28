@@ -8,22 +8,23 @@ import {
     PLAYER_WIDTH,
 } from './constants';
 import { Player } from './entities/Player';
+import { Platform } from './entities/Platform';
 
 class GameScene extends Phaser.Scene {
-    private player1!: Phaser.GameObjects.Rectangle;
+    private player1!: Player;
     private player1Keys!: {
         left: Phaser.Input.Keyboard.Key;
         right: Phaser.Input.Keyboard.Key;
         up: Phaser.Input.Keyboard.Key;
     };
-    private player2!: Phaser.GameObjects.Rectangle;
+    private player2!: Player;
     private player2Keys!: {
         left: Phaser.Input.Keyboard.Key;
         right: Phaser.Input.Keyboard.Key;
         up: Phaser.Input.Keyboard.Key;
     };
 
-    private platforms!: Phaser.GameObjects.Rectangle[];
+    private platforms!: Platform[];
     private exit!: Phaser.GameObjects.Rectangle;
     private currentLevel = 0;
 
