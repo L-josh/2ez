@@ -1,6 +1,6 @@
-import { NamedTupleMember } from "typescript";
+import { NamedTupleMember } from 'typescript';
 
-import { PLAYER_HEIGHT, PLAYER_WIDTH } from './constants'
+import { PLAYER_HEIGHT, PLAYER_WIDTH } from './constants';
 
 export interface LevelData {
     platforms: Array<{ x: number; y: number; width: number; height: number }>;
@@ -11,7 +11,7 @@ export interface LevelData {
 
 export const levels: LevelData[] = [
     // basic levels for now, we can json load later
-    { 
+    {
         platforms: [
             { x: 400, y: 568, width: 800, height: 64 },
             { x: 200, y: 400, width: 200, height: 32 },
@@ -19,6 +19,6 @@ export const levels: LevelData[] = [
         ],
         player1Start: { x: 100, y: 450 },
         player2Start: { x: 100 + PLAYER_WIDTH + 5, y: 450 },
-        exit: { x: 700, y: 200 }
-    }
-]
+        exit: { x: 700, y: 200 },
+    },
+];
