@@ -6,7 +6,8 @@ export interface LevelData {
     platforms: Array<{ x: number; y: number; width: number; height: number }>;
     player1Start: { x: number; y: number };
     player2Start: { x: number; y: number };
-    exit: { x: number; y: number };
+    exit1: { x: number; y: number };
+    exit2: { x: number; y: number };
 }
 
 export const levels: LevelData[] = [
@@ -19,6 +20,7 @@ export const levels: LevelData[] = [
         ],
         player1Start: { x: 100, y: 450 },
         player2Start: { x: 100 + PLAYER_WIDTH + 5, y: 450 },
-        exit: { x: 700, y: 200 },
+        exit1: { x: 700, y: 200 },
+        exit2: { x: 700, y: 200 },
     },
 ];

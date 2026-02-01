@@ -12,20 +12,10 @@ import { Platform } from './entities/Platform';
 
 class GameScene extends Phaser.Scene {
     private player1!: Player;
-    private player1Keys!: {
-        left: Phaser.Input.Keyboard.Key;
-        right: Phaser.Input.Keyboard.Key;
-        up: Phaser.Input.Keyboard.Key;
-    };
     private player2!: Player;
-    private player2Keys!: {
-        left: Phaser.Input.Keyboard.Key;
-        right: Phaser.Input.Keyboard.Key;
-        up: Phaser.Input.Keyboard.Key;
-    };
-
     private platforms!: Platform[];
-    private exit!: Phaser.GameObjects.Rectangle;
+    private exit1!: Phaser.GameObjects.Rectangle;
+    private exit2!: Phaser.GameObjects.Rectangle;
     private currentLevel = 0;
 
     constructor() {
@@ -49,14 +39,23 @@ class GameScene extends Phaser.Scene {
             this.platforms.push(platform);
         });
 
-        this.exit = this.add.rectangle(
-            levelData.exit.x,
-            levelData.exit.y,
+        this.exit1 = this.add.rectangle(
+            levelData.exit1.x,
+            levelData.exit1.y,
             PLAYER_WIDTH * 2,
             PLAYER_HEIGHT,
             0x00ff00
         );
-        this.physics.add.existing(this.exit, true);
+        this.physics.add.existing(this.exit1, true);
+
+        this.exit2 = this.add.rectangle(
+            levelData.exit2.x,
+            levelData.exit2.y,
+            PLAYER_WIDTH * 2,
+            PLAYER_HEIGHT,
+            0x00ff00
+        );
+        this.physics.add.existing(this.exit2, true);
 
         this.player1 = new Player(
             this,
@@ -96,16 +95,24 @@ class GameScene extends Phaser.Scene {
         this.physics.add.collider([this.player1, this.player2], this.platforms);
         this.physics.add.collider(this.player1, this.player2);
 
+        // this.physics.add.overlap(
+        //     this.player1,
+        //     this.exit1,
+        //     this.reachExit,
+        //     undefined,
+        //     this
+        // );
+        // this.physics.add.overlap(
+        //     this.player2,
+        //     this.exit1,
+        //     this.reachExit,
+        //     undefined,
+        //     this
+        // );
+
         this.physics.add.overlap(
-            this.player1,
-            this.exit,
-            this.reachExit,
-            undefined,
-            this
-        );
-        this.physics.add.overlap(
-            this.player2,
-            this.exit,
+            [this.player1, this.player2],
+            [this.exit1, this.exit2],
             this.reachExit,
             undefined,
             this
