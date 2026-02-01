@@ -1,8 +1,13 @@
-import { PLAYER_HEIGHT, PLAYER_WIDTH } from '../constants';
-
 export class Platform extends Phaser.GameObjects.Rectangle {
-    constructor(scene: Phaser.Scene, x: number, y: number, color: number) {
-        super(scene, x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
+    constructor(
+        scene: Phaser.Scene,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: number
+    ) {
+        super(scene, x, y, width, height, color);
         scene.add.existing(this);
         scene.physics.add.existing(this, true);
     }
